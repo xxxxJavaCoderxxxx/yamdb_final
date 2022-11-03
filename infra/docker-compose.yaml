@@ -12,8 +12,8 @@ services:
     ports:
      - "8000:8000"
     volumes:
-      - static_value:/app/static/
-      - media_value:/app/media/
+      - static_value:/app/static
+      - media_value:/app/media
     depends_on:
       - db
     env_file:
@@ -24,8 +24,8 @@ services:
       - "80:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - static_value:/var/static/
-      - media_value:/var/media/
+      - static_value:/var/static
+      - media_value:/var/media
     depends_on:
       - web
 volumes:
