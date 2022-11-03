@@ -45,6 +45,8 @@ jobs:
     steps:
     - name: executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
+      env: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
@@ -54,9 +56,8 @@ jobs:
           sudo docker-compose stop
           sudo docker-compose rm web
           echo ${{ secrets.GITHUB_TOKEN }}
-          wget https://raw.githubusercontent.com/xxxxJavaCoderxxxx/yamdb_final/master/infra/docker-compose.yaml?token=${{ secrets.GITHUB_TOKEN }} -O docker-compose.yaml
-          wget https://raw.githubusercontent.com/xxxxJavaCoderxxxx/yamdb_final/master/infra/nginx/default.conf?token=${{ secrets.GITHUB_TOKEN }} -O default.conf
-          mkdir nginx
+          curl -s https://$GITHUB_TOKEN@raw.githubusercontent.com/xxxxJavaCoderxxxx/yamdb_final/master/infra/docker-compose.yaml
+          curl -s https://$GITHUB_TOKEN@raw.githubusercontent.com/xxxxJavaCoderxxxx/yamdb_final/master/infra/nginx/default.conf
           mv default.conf ./nginx/default.conf
           touch .env
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
