@@ -7,7 +7,7 @@ services:
     env_file:
       - ./.env
   web:
-    image: memekeke/api_yamdb_final
+    image: memekeke/api_yamdb
     restart: always
     ports:
      - "8000:8000"

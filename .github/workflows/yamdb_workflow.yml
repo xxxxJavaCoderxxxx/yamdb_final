@@ -37,7 +37,7 @@ jobs:
           uses: docker/build-push-action@v2 
           with:
             push: true
-            tags: memekeke/api_yamdb_final
+            tags: memekeke/api_yamdb
             context: ./api_yamdb
   deploy:
     runs-on: ubuntu-latest
