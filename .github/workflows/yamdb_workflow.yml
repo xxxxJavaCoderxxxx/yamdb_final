@@ -57,6 +57,7 @@ jobs:
         script: |
           sudo docker-compose stop
           sudo docker-compose rm web
+          echo https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/infra/nginx/default.conf
           curl -H 'Authorization: token '"${{ secrets.GITHUB_TOKEN }}"'' -H 'Accept: application/vnd.github.v4.raw' -L "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/infra/docker-compose.yaml" -O
           curl -H 'Authorization: token '"${{ secrets.GITHUB_TOKEN }}"'' -H 'Accept: application/vnd.github.v4.raw' -L "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/infra/nginx/default.conf" -O
           mkdir -p nginx
