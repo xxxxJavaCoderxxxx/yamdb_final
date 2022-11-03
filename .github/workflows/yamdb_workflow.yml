@@ -55,10 +55,9 @@ jobs:
         script: |
           sudo docker-compose stop
           sudo docker-compose rm web
-          echo ${{ secrets.GITHUB_TOKEN }}
           curl -s https://$GITHUB_TOKEN@raw.githubusercontent.com/xxxxJavaCoderxxxx/yamdb_final/master/infra/docker-compose.yaml
           curl -s https://$GITHUB_TOKEN@raw.githubusercontent.com/xxxxJavaCoderxxxx/yamdb_final/master/infra/nginx/default.conf
-          mv default.conf ./nginx/default.conf
+          mv -f default.conf ./nginx/default.conf
           touch .env
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
@@ -67,7 +66,6 @@ jobs:
           echo DB_HOST=${{ secrets.DB_HOST }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-          echo DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }} >> .env
           sudo docker-compose up -d
   send_message:
     runs-on: ubuntu-latest
