@@ -57,7 +57,7 @@ class Command(BaseCommand):
                 f'Filename {filename} not in {list(self.files.keys())}'
             )
             return
-        Obj = self.files.get(filename)
+        obj = self.files.get(filename)
         csv_file = os.path.join(
             BASE_DIR,
             f'static/data/{filename}',
@@ -70,4 +70,4 @@ class Command(BaseCommand):
             reader = csv.DictReader(f)
             for row in reader:
                 self._prepare_fields(row)
-                Obj.objects.update_or_create(**row)
+                obj.objects.update_or_create(**row)
