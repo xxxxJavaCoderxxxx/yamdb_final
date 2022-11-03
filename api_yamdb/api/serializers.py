@@ -40,7 +40,7 @@ class CustomTokenSerializer(TokenObtainSerializer):
         user = authenticate(**authenticate_kwargs)
         if not api_settings.USER_AUTHENTICATION_RULE(user):
             raise exceptions.ParseError
-        return { 'access': str(self.get_token(user)) }
+        return {'access': str(self.get_token(user))}
 
 
 class RegistrationSerializer(serializers.ModelSerializer):
@@ -108,7 +108,7 @@ class PatchUserSerializer(UserSerializer):
     def validate_role(self, value):
         user = self.context.get('request').user
         if not user.is_admin:
-            value = user.role
+            return user.role
         return value
 
 
