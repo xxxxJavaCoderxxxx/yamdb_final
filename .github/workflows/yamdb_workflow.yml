@@ -53,7 +53,10 @@ jobs:
         script: |
           sudo docker-compose stop
           sudo docker-compose rm web
-          cd infra
+          wget https://raw.githubusercontent.com/xxxxJavaCoderxxxx/yamdb_final/master/infra/docker-compose.yaml?token=${{ secrets.GITHUB_TOKEN }} -O docker-compose.yaml
+          wget https://raw.githubusercontent.com/xxxxJavaCoderxxxx/yamdb_final/master/infra/nginx/default.conf?token=${{ secrets.GITHUB_TOKEN }} -O default.conf
+          mkdir nginx
+          mv default.conf ./nginx/default.conf
           touch .env
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
