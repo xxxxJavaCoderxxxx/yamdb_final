@@ -10,7 +10,7 @@
 Клонировать репозиторий и перейти в него в командной строке:
 
 ```
-git clone https://github.com/xxxxJavaCoderxxxx/infra_sp2.git
+git clone git@github.com:xxxxJavaCoderxxxx/yamdb_final.git
 ```
 
 ```
@@ -20,27 +20,37 @@ cd ./api_yamdb_final/infra
 ```
 touch .env
 ```
+
 ```
 DB_ENGINE=django.db.backends.postgresql 
 ```
+
 ```
 DB_NAME= имя БД
 ```
+
 ```
 POSTGRES_USER= Пользователь Postgres
 ```
+
+```
 POSTGRES_PASSWORD= Пароль от Postgres
+```
+
 ```
 DB_HOST= БД
 ```
+
+```
 DB_PORT= порт службы БД
+```
 
 ### Docker:
 ```
 docker-compose up -d --build
 ```
 ### Примеры использования API:
-|:--:|:------------:|:--------------|:--------------|
-| POST | http://127.0.0.1:8000/api/v1/auth/signup/ | {<br>"username": "string",<br>"email": "user@example.com"<br>}| Зарегистрироваться |
-| POST | http://127.0.0.1:8000/api/v1/auth/token/ |{<br>"username": "string",<br>"confirmation_code": "string"<br>} | Получить токен.|
-| PATCH | http://127.0.0.1:8000/api/v1/users/me | {<br>"username": "string",<br>"email": "user@example.com",<br>"first_name": "string",<br>"last_name": "string",<br>"bio": "string",<br>"role": "user"<br>}|Отредактировать данные о себе|
+|:--------:|--------------:|----------------:|-----------------:|
+|POST | http://127.0.0.1:8000/api/v1/auth/signup/ | {<br>"username": "string",<br>"email": "user@example.com"<br>}  | Зарегистрироваться |
+|POST | http://127.0.0.1:8000/api/v1/auth/token/  |{<br>"username": "string",<br>"confirmation_code": "string"<br>} | Получить токен.    |
+|PATCH| http://127.0.0.1:8000/api/v1/users/me     | {<br>"username": "string",<br>"email": "user@example.com",<br>"first_name": "string",<br>"last_name": "string",<br>"bio": "string",<br>"role": "user"<br>} |Отредактировать данные о себе|
