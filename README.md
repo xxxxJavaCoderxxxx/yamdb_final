@@ -1,4 +1,4 @@
-![Build Status](https://github.com/xxxxJavaCoderxxxx/yyamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+![Build Status](https://github.com/xxxxJavaCoderxxxx/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 ### Описание:
 Проект реализован с помощью Rest Framework API и предзначен для
 создания отзывов (Review) на произведение (Title), соответствующео жанра (Genre) и категории (Category).
