@@ -53,9 +53,9 @@ jobs:
         script: |
           sudo docker-compose stop
           sudo docker-compose rm web
-          echo 'https://api.github.com/repos/'"${{ env.GITHUB_REPOSITORY }}"'/contents/infra/docker-compose.yaml'
-          curl -H 'Authorization: token '"${{ secrets.GITHUB_TOKEN }}"'' -H 'Accept: application/vnd.github.v4.raw' -L 'https://api.github.com/repos/'"${{ env.GITHUB_REPOSITORY }}"'/contents/infra/docker-compose.yaml' -O
-          curl -H 'Authorization: token '"${{ secrets.GITHUB_TOKEN }}"'' -H 'Accept: application/vnd.github.v4.raw' -L 'https://api.github.com/repos/'"${{ env.GITHUB_REPOSITORY }}"'/contents/infra/nginx/default.conf' -O
+          echo "https://api.github.com/repos/$GITHUB_REPOSITORY/contents/infra/docker-compose.yaml"
+          curl -H 'Authorization: token '"${{ secrets.GITHUB_TOKEN }}"'' -H 'Accept: application/vnd.github.v4.raw' -L "https://api.github.com/repos/$GITHUB_REPOSITORY/contents/infra/docker-compose.yaml" -O
+          curl -H 'Authorization: token '"${{ secrets.GITHUB_TOKEN }}"'' -H 'Accept: application/vnd.github.v4.raw' -L "https://api.github.com/repos/$GITHUB_REPOSITORY/contents/infra/nginx/default.conf" -O
           mkdir -p nginx
           mv default.conf ./nginx/default.conf
           touch .env
