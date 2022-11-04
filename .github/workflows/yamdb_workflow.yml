@@ -52,7 +52,7 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE }}
         script: |
           sudo docker-compose stop
-          sudo docker-compose rm web
+          sudo docker system prune -f
           curl -H 'Authorization: token '"${{ secrets.GITHUB_TOKEN }}"'' -H 'Accept: application/vnd.github.v4.raw' -L https://api.github.com/repos/${{ github.repository }}/contents/infra/docker-compose.yaml -O
           curl -H 'Authorization: token '"${{ secrets.GITHUB_TOKEN }}"'' -H 'Accept: application/vnd.github.v4.raw' -L https://api.github.com/repos/${{ github.repository }}/contents/infra/nginx/default.conf -O
           mkdir -p nginx
