@@ -52,8 +52,7 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE }}
         script: |
           sudo docker-compose stop
-          sudo docker system prune -f
-          sudo docker volume prune -f
+          sudo docker-compose rm
           sudo docker image rm ${{ secrets.DOCKER_USERNAME }}/api_yamdb
           curl -H 'Authorization: token '"${{ secrets.GITHUB_TOKEN }}"'' -H 'Accept: application/vnd.github.v4.raw' -L https://api.github.com/repos/${{ github.repository }}/contents/infra/docker-compose.yaml -O
           curl -H 'Authorization: token '"${{ secrets.GITHUB_TOKEN }}"'' -H 'Accept: application/vnd.github.v4.raw' -L https://api.github.com/repos/${{ github.repository }}/contents/infra/nginx/default.conf -O
@@ -67,6 +66,8 @@ jobs:
           echo DB_HOST=${{ secrets.DB_HOST }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+          echo EMAIL_HOST_USER=${{ secrets.EMAIL_HOST_USER }} >> .env
+          echo EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }} >> .env
           sudo docker-compose up -d
   send_message:
     runs-on: ubuntu-latest
